@@ -9,20 +9,20 @@ import pages.LoginPage;
 import wrappers.OpentapsWrappers;
 import pages.findLeadWindow;
 
-public class TC005_DuplicateLead extends OpentapsWrappers{
+public class TC003_DeleteLead extends OpentapsWrappers{
 
 	@BeforeClass
 	public void setData() {
-		testCaseName="Duplicate";
-		testDescription="Duplicate the lead";
+		testCaseName="Delete";
+		testDescription="Delete the lead";
 		browserName="chrome";
-		dataSheetName="TC_005";
-		category="Regression";
+		dataSheetName="TC_003";
+		category="Sanity";
 		authors="Natrayan M";
 	}
 
 	@Test(dataProvider="fetchData")
-	public void duplicateLead(String userName, String passWord, String email, String fname) throws InterruptedException{
+	public void deleteLead(String userName, String passWord, String phone) throws InterruptedException{
 
 		new LoginPage(driver, test)
 		.enterUserName(userName)
@@ -33,15 +33,18 @@ public class TC005_DuplicateLead extends OpentapsWrappers{
 		.clickLeadTab()
 		
 		.clickFindLeadPage()
-		.clickEmail()
-		.sleep(3000)
-		.enterEmail(email)
+		.clickPhone()
+		.enterPhone(phone)
 		.clickFindLead()
 		.sleep(2000)
 		.clickFirstLead() //will reutrn to ViewLeadPage
-		.clickDuplicate() // will return to DuplicatePage
-		.clickCreateLead() //will return to ViewLeadPage
-		.verifyFirstname(fname);
+		.clickDelete() // will return to MyLeadPage
+		
+		.clickFindLeadPage() //Find lead page
+		//Verify deleted lead
+		.enterLeadId(FindLeadPage.lead)
+		.clickFindLead()
+		.verifyLeadFail(FindLeadPage.lead);
 		
 				
 	}

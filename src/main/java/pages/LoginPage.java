@@ -28,10 +28,6 @@ public class LoginPage extends OpentapsWrappers  {
 		
 	}
 	
-	public HomePage clickLogin(){
-		clickByClassName("decorativeSubmit");
-		return new HomePage(driver, test);
-	}
 	
 	public LoginPage clickLoginForFailure(){
 		clickByClassName("decorativeSubmit");
@@ -43,16 +39,13 @@ public class LoginPage extends OpentapsWrappers  {
 		return this;
 	}
 	
+	public HomePage clickLogin(){
+		clickByClassName("decorativeSubmit");
+		return new HomePage(driver, test);
+	}
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-
 }

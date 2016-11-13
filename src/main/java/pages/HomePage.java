@@ -17,15 +17,13 @@ public class HomePage extends OpentapsWrappers  {
 		}
 	}
 	
-	
-	
-	public MyHome ClickCRMSLink(){
-		clickByLink("CRM/SFA");
-		return new MyHome(driver,test);
+	public HomePage verifyUserName(String uname){
+		return this;
 	}
 	
-	public LoginPage clickLogOut(){
-		clickByClassName("decorativeSubmit");
-		return new LoginPage(driver, test); 
+		
+	public MyHomePage clickCrmsfa(){
+		clickByLink("CRM/SFA");
+		return new MyHomePage(driver,test); 
 	}
 }
